@@ -1,0 +1,24 @@
+{
+  "name": "business-search-graphql-api",
+  "version": "1.0.0",
+  "description": "Using neo4j-graphql.js to search for businesses",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "GraphQL",
+    "Neo4j",
+    "GRANDstack",
+    "spatial"
+  ],
+  "author": "William Lyon",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.9.14",
+    "dotenv": "^8.2.0",
+    "neo4j-driver": "^1.7.6",
+    "neo4j-graphql-js": "^2.11.0"
+  }
+}
