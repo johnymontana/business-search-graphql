@@ -3,12 +3,13 @@ const { ApolloServer } = require("apollo-server");
 const neo4j = require("neo4j-driver").v1;
 const fs = require("fs");
 const dotenv = require("dotenv");
+const path = require("path");
 
 // Load contents of .env as environment variables
 dotenv.config();
 
 // Load GraphQL type definitions from schema.graphql file
-const typeDefs = fs.readFileSync("schema.graphql").toString("utf-8");
+const typeDefs = fs.readFileSync(path.join(__dirname,"schema.graphql")).toString("utf-8");
 
 // Create executable GraphQL schema from GraphQL type definitions,
 // using neo4j-graphql.js to autogenerate resolvers
