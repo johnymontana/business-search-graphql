@@ -4,7 +4,7 @@
   "description": "Using neo4j-graphql.js to search for businesses",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "DEBUG=neo4j-graphql.js node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
