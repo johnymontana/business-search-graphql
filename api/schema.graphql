@@ -29,4 +29,9 @@ type Business {
   state: String!
   in_category: [Category] @relation(name: "IN_CATEGORY", direction: "OUT")
   reviews: [Review] @relation(name: "REVIEWS", direction: "IN")
+  recommended(first: Int = 1): [Business] @cypher(statement: """
+      MATCH (this)<-[:REVIEWS]-(:Review)<-[:WROTE]-(:User)-[:WROTE]->(:Review)-[:REVIEWS]->(rec:Business)
+      WITH rec, COUNT(*) AS score
+      RETURN rec ORDER BY score DESC LIMIT $first
+    """)
 }
