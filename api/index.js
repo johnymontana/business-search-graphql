@@ -1,6 +1,6 @@
 const { makeAugmentedSchema } = require("neo4j-graphql-js");
 const { ApolloServer } = require("apollo-server");
-const neo4j = require("neo4j-driver").v1;
+const neo4j = require("neo4j-driver");
 const fs = require("fs");
 const dotenv = require("dotenv");
 const path = require("path");

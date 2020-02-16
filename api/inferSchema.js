@@ -1,4 +1,4 @@
-const neo4j = require("neo4j-driver").v1;
+const neo4j = require("neo4j-driver");
 const { inferSchema } = require("neo4j-graphql-js");
 const dotenv = require("dotenv");
 const fs = require("fs");
