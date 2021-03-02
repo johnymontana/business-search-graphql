@@ -55,7 +55,7 @@ const server = new ApolloServer({
   context: ({ event }) => {
     return {
       driver,
-      driverConfig: { database: "grandstack" },
+      driverConfig: { database: process.env.NEO4J_DATABASE },
     };
   },
   introspection: true,
