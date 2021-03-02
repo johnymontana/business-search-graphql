@@ -4,33 +4,32 @@ const { Neo4jGraphQL } = require("@neo4j/graphql");
 
 const typeDefs = /* GraphQL */ `
   type User {
-    _id: Long!
     name: String!
-    wrote: [Review] @relation(name: "WROTE", direction: OUT)
+    wrote: [Review] @relationship(type: "WROTE", direction: "OUT")
   }
+
   type Review {
-    _id: Long!
     date: Date!
     reviewId: String!
     stars: Float!
     text: String
-    reviews: [Business] @relation(name: "REVIEWS", direction: OUT)
-    users: [User] @relation(name: "WROTE", direction: IN)
+    reviews: [Business] @relationship(type: "REVIEWS", direction: "OUT")
+    users: [User] @relationship(type: "WROTE", direction: "IN")
   }
+
   type Category {
-    _id: Long!
     name: String!
-    businesss: [Business] @relation(name: "IN_CATEGORY", direction: IN)
+    business: [Business] @relationship(type: "IN_CATEGORY", direction: "IN")
   }
+
   type Business {
-    _id: Long!
     address: String!
     city: String!
     location: Point!
     name: String!
     state: String!
-    in_category: [Category] @relation(name: "IN_CATEGORY", direction: OUT)
-    reviews: [Review] @relation(name: "REVIEWS", direction: IN)
+    in_category: [Category] @relationship(type: "IN_CATEGORY", direction: "OUT")
+    reviews: [Review] @relationship(type: "REVIEWS", direction: "IN")
     recommended(first: Int = 1): [Business]
       @cypher(
         statement: """
@@ -64,8 +63,8 @@ const server = new ApolloServer({
 });
 
 exports.handler = server.createHandler({
-    cors: {
-        origin: "*",
-        credentials: true
-    }
-})
+  cors: {
+    origin: "*",
+    credentials: true,
+  },
+});
